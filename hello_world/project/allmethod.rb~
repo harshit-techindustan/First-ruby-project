@@ -1,0 +1,25 @@
+#Here are all the methods which are uses in this program
+
+class Allmeth
+
+ attr_accessor :email, :name, :permissions
+ 
+ def initialize(*args) #here *args is used as shortcut method to pass all aruguments in array
+   @email = args[0]
+   @name  = args[1]
+   @permissions = Allmeth.get_permissions
+ end
+
+ def self.get_permissions
+  permissions = File.read 'user_permissions.json'
+  JSON.load(permissions, nil, symbolic_names: true) #This will create json object here we can replace nil with other option and symbolic_names is uses for format of output
+ end
+
+ def save
+  json_array = {email: @email, name: @name, permissions: @permissions}.to_json
+  open('userjson.json', 'a') do |file|
+   file.puts json_array
+  end
+ end
+
+end

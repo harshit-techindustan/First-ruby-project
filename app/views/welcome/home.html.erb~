@@ -1,0 +1,4 @@
+<h1>This is my first page in ROR</h1>
+
+
+<%= link_to 'about', about_us_path %> 

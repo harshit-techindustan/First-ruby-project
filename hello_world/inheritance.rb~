@@ -1,0 +1,50 @@
+# working with inheritance
+
+module Testable
+ def testmode(anyobject)
+  puts "I am in module having method test"
+ end
+end
+class Testing
+ include Testable
+ attr_accessor :name, :email, :phone #if we use this method , no need to use getter and setter method
+ def initialize(name, email, phone) #this is used to initialize varriables
+  @name = name
+  @email = email
+  @phone = phone
+ end
+ def running
+  puts "I am running"
+ end
+ def self.newmethod #This method is self method no need to create an object for this , but for this we have to write self.method_name 
+  puts "Running without object" 
+ end
+end
+
+class Seller < Testing
+ def running
+  puts "I am running in seller class" 
+ end
+end
+
+class Buyer < Testing
+end
+
+class Admin < Testing
+end
+
+Testing.newmethod #This is calling direct from class without object
+test = Testing.new('tester', 'tester@example.com', '123456789')
+test.testmode(anyargument)
+ # puts Classname.ancestors method is used to know all of the super classes from class(eg:Testing)
+
+ puts "User name is #{test.name}, Email is #{test.email} and Phone Number is #{test.phone}"
+
+buy = Buyer.new('tester1', 'teste1r@example.com', '123456781')
+buy.running
+
+sell = Seller.new('tester2', 'teste2r@example.com', '123456781')
+sell.running
+
+admin = Admin.new('tester3', 'teste3r@example.com', '123456781')
+admin.running

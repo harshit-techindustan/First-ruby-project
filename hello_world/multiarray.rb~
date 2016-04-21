@@ -1,0 +1,54 @@
+#working with multi array.
+
+array = {"a"=>"first" , "b"=>"second" , "c"=>"third" , "d"=>"fourth"}
+
+puts array.inspect
+
+# "puts array["a"]" like this you can printvalue of array.
+
+
+#symbol array like keys of this array is symbol not string
+array = {a:3 , b:4 ,c:6 , d:4}
+
+puts array.inspect 
+
+#you can print the value of this type of array like "puts array[:c]".
+
+#add value in array
+
+array[:e] = 8
+
+array[:f] = 9 
+
+puts array.inspect 
+
+array.each {|k , v| puts v if v.even?} #print even values
+
+array.delete(:f)
+
+puts array.inspect
+
+#remove duplicates values
+#here array_name.invert interchanges keys and values
+new_array = array.invert.invert #this is simple way but it will delete first key which have duplicate value
+
+puts new_array.inspect
+
+new_array = array.to_a.reverse.to_h.invert.invert #This will gives us an result like first key remain safe and all othe key having duplicate value will be deleted
+
+puts new_array.inspect
+
+#remove value greater that 3
+
+array.each {|k , v| array.delete(k) if v > 4}
+
+puts array.inspect
+
+# array1 = ["Cat", "Dog", "Mouse"]
+	
+# array2 = ["and", "&"]
+
+# new_array = array1.zip(array2).flatten.compact output will be ["Cat", "and", "Dog", "&", "Mouse"]
+
+#all methods for hash are in this url http://ruby-doc.org/core-2.1.0/Hash.html
+

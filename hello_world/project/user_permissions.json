@@ -1,0 +1,4 @@
+{"accounts":"read",
+ "sales":"write",
+ "other":"write"
+}
